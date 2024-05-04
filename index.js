@@ -13,7 +13,6 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
-// Эндпоинт для логина
 server.post('/login', (req, res) => {
 	try {
 		const { username, password } = req.body;
