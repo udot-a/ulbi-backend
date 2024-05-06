@@ -1,21 +1,19 @@
-FROM node:8
+FROM node:20
 
-# Папка приложения
-ARG APP_DIR=app
-RUN mkdir -p ${APP_DIR}
-WORKDIR ${APP_DIR}
+# App folder
+WORKDIR /usr/src/app
 
-# Установка зависимостей
+# Packages install
 COPY package*.json ./
-RUN npm install --production
-# Для использования в продакшне
+RUN npm install
+# For production use
 # RUN npm install --production
 
-# Копирование файлов проекта
+# Copy project files
 COPY . .
 
-# Уведомление о порте, который будет прослушивать работающее приложение
+# Notify about listening port
 EXPOSE 8000
 
-# Запуск проекта
-CMD ["npm", "start"]
+# Project start
+CMD ["node", "index.js"]
