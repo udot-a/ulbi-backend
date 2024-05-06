@@ -1,19 +1,13 @@
-FROM node:20
+FROM node:14
 
-# App folder
 WORKDIR /usr/src/app
 
-# Packages install
 COPY package*.json ./
-RUN npm install
-# For production use
-# RUN npm install --production
 
-# Copy project files
+RUN npm install
+
 COPY . .
 
-# Notify about listening port
-EXPOSE 8000
+EXPOSE 3000
 
-# Project start
-CMD ["node", "index.js"]
+CMD [ "node", "index.js" ]
